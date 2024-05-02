@@ -51,12 +51,12 @@ abstract class AbstractProvider
     /**
      * Filter by team.... as the method name implies
      *
-     * @param array $events
-     * @param       $team
+     * @param array  $events
+     * @param string $team
      *
      * @return array
      */
-    public function filterByTeam(array $events, $team): array
+    public function filterByTeam(array $events, string $team): array
     {
         return array_filter($events, function ($event) use ($team) {
             return stripos($event['homeTeam'], $team) !== false || stripos($event['awayTeam'], $team) !== false;
