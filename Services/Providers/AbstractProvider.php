@@ -2,6 +2,8 @@
 
 namespace Services\Providers;
 
+use CustomExceptions\InvalidFileException;
+use CustomExceptions\InvalidJsonException;
 use Enums\SportEnum;
 
 abstract class AbstractProvider
@@ -23,11 +25,18 @@ abstract class AbstractProvider
      */
     public function __construct(SportEnum $sport, string $file)
     {
+        $this->sport = $sport;
+
         try {
-            $this->sport = $sport;
-            // These won't throw an exception. I need to do checks and throw exceptions if null / false
+            if (!file_exists($file)) {
+                throw new InvalidFileException("File {$file} does not exist!" . PHP_EOL);
+            }
+
             $file = file_get_contents($file);
             $this->json = json_decode($file, true);
+            if ($this->json === null) {
+                throw new InvalidJsonException("File {$file} is not valid JSON!" . PHP_EOL);
+            }
         } catch (\Throwable $e) {
             echo $e->getMessage() . PHP_EOL;
             exit;
