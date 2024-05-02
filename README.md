@@ -42,6 +42,7 @@ docker build -t php-sports-parser .
 - `--date`: Filters events to include only those occurring on the specified date in `YYYY-MM-DD` format.
 - `--team`: Filters events to include only those involving the specified team name.
 
+#### Usage
 1. **Basic Usage**:
    docker run --rm php-sports-parser --provider=DraftKings --sport=MLB --filename=DraftKings_MLB_gamelines.json
 
