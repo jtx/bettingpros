@@ -38,7 +38,6 @@ class DraftKings extends AbstractProvider
         foreach ($this->json['events'] as $event) {
             foreach ($event['offers'] as $offer) {
                 if ($offer['label'] === 'Total') {
-
                     foreach ($offer['outcomes'] as $outcome) {
                         if (!(stripos($outcome['label'], 'over') === false && stripos(
                                 $outcome['label'],
@@ -71,18 +70,5 @@ class DraftKings extends AbstractProvider
         }
 
         return $offers;
-    }
-
-    public function processData(): array
-    {
-        $events = $this->extractEvents();
-        $offers = $this->extractOffers();
-
-        $filteredEvents = $this->filterByDate($events, '2024-04-20');
-        $filteredEvents = $this->filterByTeam($filteredEvents, 'SD Padres');
-
-        $filteredOffers = $this->getFilteredOffers($filteredEvents, $offers);
-
-        return ['events' => $filteredEvents, 'offers' => $filteredOffers];
     }
 }
