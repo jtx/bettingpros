@@ -20,6 +20,8 @@ From the root of your project directory (where the Dockerfile is located), run:
 docker build -t php-sports-parser .
 ```
 
+Note, any time there is an update and you run git pull origin master, you'll need to run the above command
+
 ### To run this script
 
 ```docker run --rm php-sports-parser --provider=DraftKings --sport=MLB --filename=DraftKings_MLB_gamelines.json [options]```
