@@ -6,6 +6,9 @@ use Enums\SportEnum;
 
 abstract class AbstractProvider
 {
+    /**
+     * @var \Enums\SportEnum
+     */
     protected SportEnum $sport;
     /**
      * @var array|mixed
@@ -29,8 +32,14 @@ abstract class AbstractProvider
         }
     }
 
+    /**
+     * @return array
+     */
     abstract public function extractEvents(): array;
 
+    /**
+     * @return array
+     */
     abstract public function extractOffers(): array;
 
     /**
