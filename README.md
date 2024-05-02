@@ -43,7 +43,7 @@ docker build -t php-sports-parser .
 - `--team`: Filters events to include only those involving the specified team name.
 
 1. **Basic Usage**:
-   docker run --rm php-sports-parser --provider=DraftKings --sport=MLB --filename=data.json
+   docker run --rm php-sports-parser --provider=DraftKings --sport=MLB --filename=DraftKings_MLB_gamelines.json
 
 2. **With Date Filter**:
    docker run --rm php-sports-parser --provider=DraftKings --sport=MLB --filename=DraftKings_MLB_gamelines.json --date=2024-04-20
