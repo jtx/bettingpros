@@ -20,6 +20,7 @@ abstract class AbstractProvider
     {
         try {
             $this->sport = $sport;
+            // These won't catch an exception. I need to do checks and throw exceptions if null / false
             $file = file_get_contents($file);
             $this->json = json_decode($file, true);
         } catch (\Throwable $e) {
