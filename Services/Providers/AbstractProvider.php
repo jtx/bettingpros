@@ -15,6 +15,8 @@ abstract class AbstractProvider
      */
     protected array $json;
 
+    const PROJECTION = 8;   // be honest with you, is this just over/under average? Not sure
+
     /**
      * @param \Enums\SportEnum $sport
      * @param string           $file

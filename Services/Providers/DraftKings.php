@@ -34,7 +34,7 @@ class DraftKings extends AbstractProvider
     public function extractOffers(): array
     {
         $offers = [];
-        $projection = 8;
+        $projection = self::PROJECTION;
         foreach ($this->json['events'] as $event) {
             foreach ($event['offers'] as $offer) {
                 if ($offer['label'] === 'Total') {
