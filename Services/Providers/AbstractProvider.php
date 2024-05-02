@@ -29,7 +29,7 @@ abstract class AbstractProvider
             $file = file_get_contents($file);
             $this->json = json_decode($file, true);
         } catch (\Throwable $e) {
-            echo $e->getMessage() . "\n";
+            echo $e->getMessage() . PHP_EOL;
             exit;
         }
     }
