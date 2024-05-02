@@ -35,6 +35,7 @@ try {
 
     // Optional date filtering
     if (!empty($opts['date'])) {
+        // TODO: verify date format
         $events = $provider->filterByDate($events, $opts['date']);
     }
 
