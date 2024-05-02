@@ -83,6 +83,7 @@ abstract class AbstractProvider
     public function getFilteredOffers(array $events, array $offers): array
     {
         $eventIds = array_column($events, 'id');
+
         return array_filter($offers, function ($offer) use ($eventIds) {
             return in_array($offer['event_id'], $eventIds);
         });
