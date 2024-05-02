@@ -17,6 +17,7 @@ class Processor
     {
         $output = ['events' => $this->events, 'offers' => []];
         foreach ($this->offers as $offer) {
+            // TODO: "8" should be an argument or in a config file
             $diff = 8 - (float)$offer['line'];
             $recommendation = 'no_bet';
 
