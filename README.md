@@ -28,7 +28,7 @@ docker build -t php-sports-parser .
 
 - `--provider`: Specifies the data provider class to use for fetching and processing data. Currently, the only available
   provider is:
-    - `DraftKingsProvider`
+    - `DraftKings`
 - `--sport`: Specifies the type of sport to filter the data. Available sports types are:
     - NFL - National Football League
     - NBA - National Basketball Association
