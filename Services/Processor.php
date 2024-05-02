@@ -30,7 +30,7 @@ class Processor
             $output['offers'][] = [
                 'event_id' => $offer['event_id'],
                 'label' => $offer['label'],
-                'projection' => 8,
+                'projection' => 8,  // TODO: This should be an argument or in a config file
                 'recommendation' => $recommendation,
                 'diff' => $diff,
                 'line' => $offer['line'],
