@@ -36,17 +36,15 @@ try {
     // Optional date filtering
     if (!empty($opts['date'])) {
         $events = $provider->filterByDate($events, $opts['date']);
-        $offers = $provider->getFilteredOffers($events, $offers);
     }
 
     // Optional team filtering
     if (!empty($opts['team'])) {
         $events = $provider->filterByTeam($events, $opts['team']);
-        $offers = $provider->getFilteredOffers($events, $offers);
     }
 
+    $offers = $provider->getFilteredOffers($events, $offers);
     $processor = new Processor($events, $offers);
-
     $res = $processor->process();
     if ($res === false) {
         throw new Exception('Unknown Error');
