@@ -4,8 +4,7 @@ This PHP command line script for our code challenge
 
 ## Requirements
 
-- PHP 8.2.*
-- (Or Docker)
+- Docker
 
 ## Docker Setup
 
