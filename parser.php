@@ -30,25 +30,10 @@ try {
 
     $provider = new $provider($sportEnum, __DIR__ . '/Data/' . $opts['filename']);
 
-    $events = $provider->extractEvents();
-    $offers = $provider->extractOffers();
-
-    // Optional date filtering
-    if (!empty($opts['date'])) {
-        // TODO: validate date format
-        $events = $provider->filterByDate($events, $opts['date']);
-    }
-
-    // Optional team filtering
-    if (!empty($opts['team'])) {
-        $events = $provider->filterByTeam($events, $opts['team']);
-    }
-
-    $offers = $provider->getFilteredOffers($events, $offers);
-    $processor = new Processor($events, $offers);
+    $processor = new Processor($provider, $opts);
     $res = $processor->process();
     if ($res === false) {
-        throw new Exception('Unknown Error');
+        throw new \Exception('Unknown Error');
     }
 
     echo $res . PHP_EOL;

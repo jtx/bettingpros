@@ -2,42 +2,37 @@
 
 namespace Services;
 
+use Services\Providers\AbstractProvider;
+
 class Processor
 {
     /**
-     * @param array $events
-     * @param array $offers
+     * @param \Services\Providers\AbstractProvider $provider
+     * @param array                                $opts
      */
-    public function __construct(protected array $events, protected array $offers) { }
+    public function __construct(protected AbstractProvider $provider, protected array $opts = []) { }
 
     /**
      * @return false|string
      */
     public function process(): false|string
     {
-        $output = ['events' => $this->events, 'offers' => []];
-        foreach ($this->offers as $offer) {
-            // TODO: "8" should be an argument or in a config file
-            $diff = 8 - (float)$offer['line'];
-            $recommendation = 'no_bet';
+        $events = $this->provider->extractEvents();
+        $offers = $this->provider->extractOffers();
 
-            if ($diff > 0.5) {
-                $recommendation = 'over';
-            } elseif ($diff < -0.5) {
-                $recommendation = 'under';
-            }
-
-            $output['offers'][] = [
-                'event_id' => $offer['event_id'],
-                'label' => $offer['label'],
-                'projection' => 8,  // TODO: This should be an argument or in a config file
-                'recommendation' => $recommendation,
-                'diff' => $diff,
-                'line' => $offer['line'],
-                'odds' => $offer['odds'],
-                'label_outcome' => $offer['label_outcome'],
-            ];
+        // Optional date filtering
+        if (!empty($this->opts['date'])) {
+            $events = $this->provider->filterByDate($events, $this->opts['date']);
         }
+
+        // Optional team filtering
+        if (!empty($this->opts['team'])) {
+            $events = $this->provider->filterByTeam($events, $this->opts['team']);
+        }
+
+        $offers = $this->provider->getFilteredOffers($events, $offers);
+
+        $output = ['events' => $events, 'offers' => $offers];
 
         return json_encode($output, JSON_PRETTY_PRINT);
     }
