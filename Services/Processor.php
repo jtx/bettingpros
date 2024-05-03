@@ -18,7 +18,6 @@ class Processor
     public function process(): false|string
     {
         $events = $this->provider->extractEvents();
-        $offers = $this->provider->extractOffers();
 
         // Optional date filtering
         if (!empty($this->opts['date'])) {
@@ -30,8 +29,8 @@ class Processor
             $events = $this->provider->filterByTeam($events, $this->opts['team']);
         }
 
+        $offers = $this->provider->extractOffers();
         $offers = $this->provider->getFilteredOffers($events, $offers);
-
         $output = ['events' => $events, 'offers' => $offers];
 
         return json_encode($output, JSON_PRETTY_PRINT);
