@@ -19,7 +19,7 @@ From the root of your project directory (where the Dockerfile is located), run:
 docker build -t bettingpros-challenge .
 ```
 
-Note, any time there is an update and you run git pull origin master, you'll need to run the above command
+Note, any time there is an update, and you run git pull origin master, you'll need to run the above command
 
 ### To run this script
 
