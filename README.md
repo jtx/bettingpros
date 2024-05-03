@@ -17,14 +17,14 @@ application in a Docker container.
 From the root of your project directory (where the Dockerfile is located), run:
 
 ```bash
-docker build -t php-sports-parser .
+docker build -t bettingpros-challenge .
 ```
 
 Note, any time there is an update and you run git pull origin master, you'll need to run the above command
 
 ### To run this script
 
-```docker run --rm php-sports-parser --provider=DraftKings --sport=MLB --filename=DraftKings_MLB_gamelines.json [options]```
+```docker run --rm bettingpros-challenge --provider=DraftKings --sport=MLB --filename=DraftKings_MLB_gamelines.json [options]```
 
 #### Required:
 
@@ -46,13 +46,13 @@ Note, any time there is an update and you run git pull origin master, you'll nee
 
 #### Usage
 1. **Basic Usage**:
-   docker run --rm php-sports-parser --provider=DraftKings --sport=MLB --filename=DraftKings_MLB_gamelines.json
+   docker run --rm bettingpros-challenge --provider=DraftKings --sport=MLB --filename=DraftKings_MLB_gamelines.json
 
 2. **With Date Filter**:
-   docker run --rm php-sports-parser --provider=DraftKings --sport=MLB --filename=DraftKings_MLB_gamelines.json --date=2024-04-20
+   docker run --rm bettingpros-challenge --provider=DraftKings --sport=MLB --filename=DraftKings_MLB_gamelines.json --date=2024-04-20
 
 3. **With Team Filter**:
-   docker run --rm php-sports-parser --provider=DraftKings --sport=MLB --filename=DraftKings_MLB_gamelines.json --team="Brewers"
+   docker run --rm bettingpros-challenge --provider=DraftKings --sport=MLB --filename=DraftKings_MLB_gamelines.json --team="Brewers"
 
 
 
