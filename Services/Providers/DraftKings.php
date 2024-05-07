@@ -34,7 +34,6 @@ class DraftKings extends AbstractProvider
     public function extractOffers(): array
     {
         $offers = [];
-        $projection = self::PROJECTION;
         foreach ($this->json['events'] as $event) {
             foreach ($event['offers'] as $offer) {
                 if ($offer['label'] === 'Total') {
@@ -44,7 +43,7 @@ class DraftKings extends AbstractProvider
                                 'under'
                             ) === false)) {
                             $line = (float)$outcome['line'];
-                            $diff = $projection - $line;
+                            $diff = self::PROJECTION - $line;
                             $defaultBet = 'no_bet';
 
                             if ($diff > 0.5) {
@@ -56,7 +55,7 @@ class DraftKings extends AbstractProvider
                             $offers[] = [
                                 'event_id' => $event['id'],
                                 'label' => $offer['label'],
-                                'projection' => $projection,
+                                'projection' => self::PROJECTION,
                                 'recommendation' => $defaultBet,
                                 'diff' => $diff,
                                 'line' => $line,
