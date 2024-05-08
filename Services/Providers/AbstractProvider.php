@@ -12,6 +12,7 @@ abstract class AbstractProvider
      * @var \Enums\SportEnum
      */
     protected SportEnum $sport;
+    
     /**
      * @var array|mixed
      */
