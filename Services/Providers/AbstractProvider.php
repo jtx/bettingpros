@@ -12,7 +12,7 @@ abstract class AbstractProvider
      * @var \Enums\SportEnum
      */
     protected SportEnum $sport;
-    
+
     /**
      * @var array|mixed
      */
@@ -22,22 +22,24 @@ abstract class AbstractProvider
 
     /**
      * @param \Enums\SportEnum $sport
-     * @param string           $file
+     * @param string           $fileName
      */
-    public function __construct(SportEnum $sport, string $file)
+    public function __construct(SportEnum $sport, string $fileName)
     {
         $this->sport = $sport;
 
         try {
-            if (!file_exists($file)) {
-                throw new InvalidFileException("File {$file} does not exist!" . PHP_EOL);
+            if (!file_exists($fileName)) {
+                throw new InvalidFileException("File {$fileName} does not exist!" . PHP_EOL);
             }
 
-            $file = file_get_contents($file);
-            $this->json = json_decode($file, true);
-            if ($this->json === null) {
-                throw new InvalidJsonException("File {$file} is not valid JSON!" . PHP_EOL);
+            $fileContents = file_get_contents($fileName);
+            $json = json_decode($fileContents, true);
+            if ($json === null) {
+                throw new InvalidJsonException("File {$fileName} is not valid JSON!" . PHP_EOL);
             }
+
+            $this->json = $json;
         } catch (\Throwable $e) {
             echo $e->getMessage() . PHP_EOL;
             exit;
