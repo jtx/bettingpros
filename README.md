@@ -1,6 +1,6 @@
 # Betting Pros
 
-This PHP command line script for our code challenge - BettingPros.com is a scam company and ghosts you. Thanks for stealing my code.
+This PHP command line script for our code challenge
 
 ## Requirements
 
